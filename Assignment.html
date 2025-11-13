@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce Portal</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  header {
+    background-color: #222;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+  }
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    margin: 0;
+  }
+  nav ul li {
+    margin: 0 15px;
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav ul li a:hover, nav ul li a.active {
+    color: yellow;
+  }
+  main {
+    padding: 20px;
+  }
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .product {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>E-Commerce Portal</h1>
+</header>
+
+<nav>
+  <ul class="menu">
+    <li><a href="#" class="active" data-target="home">Home</a></li>
+    <li><a href="#" data-target="products">Product Items</a></li>
+    <li><a href="#" data-target="contact">Contact Us</a></li>
+    <li><a href="#" data-target="about">About Us</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="home" class="active">
+    <h2>Welcome to Our Store!</h2>
+    <p>Shop from a wide variety of products below.</p>
+  </section>
+
+  <section id="products">
+    <h2>Product Items</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/43/15/ae/4315ae69df9daa2550203db798b0d77f.jpg" alt="Wireless Headphones">
+        <h3>Wireless Headphones</h3>
+        <p>₹2,499</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/cd/58/68/cd5868c0f0f36f24c41aa9f0d0ecddad.jpg" alt="Smart Watch">
+        <h3>Smart Watch</h3>
+        <p>₹3,999</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.pinimg.com/1200x/e0/a5/b3/e0a5b353b3f7adcba85393a731a5bd61.jpg" alt="Running Shoes">
+        <h3>Running Shoes</h3>
+        <p>₹2,199</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/0e/6a/24/0e6a24a0524c589f60c758c851ebdcd7.jpg" alt="Backpack">
+        <h3>Backpack</h3>
+        <p>₹1,299</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.pinimg.com/1200x/53/1e/fb/531efb5944b1825f48da67badcac761e.jpg" alt="Sunglasses">
+        <h3>Sunglasses</h3>
+        <p>₹899</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.pinimg.com/1200x/26/07/2b/26072baeddce0bc0560123d0d50deb6d.jpg" alt="Bluetooth Speaker">
+        <h3>Bluetooth Speaker</h3>
+        <p>₹1,799</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@ecommerce.com</p>
+    <p>Phone: +91 98765 43210</p>
+    <form>
+      <label>Name:</label><br>
+      <input type="text" required><br><br>
+      <label>Message:</label><br>
+      <textarea required></textarea><br><br>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are a leading online store bringing you the best products at affordable prices.</p>
+    <p>Our mission is to make online shopping easy, safe, and reliable for everyone.</p>
+  </section>
+</main>
+
+<script>
+  const menuLinks = document.querySelectorAll('.menu a');
+  const sections = document.querySelectorAll('main section');
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = link.getAttribute('data-target');
+      
+      // Update active link
+      menuLinks.forEach(a => a.classList.remove('active'));
+      link.classList.add('active');
+      
+      // Show the right section
+      sections.forEach(sec => {
+        if (sec.id === target) sec.classList.add('active');
+        else sec.classList.remove('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
